@@ -29,9 +29,8 @@ RUN cp -rf /tmp/zeppelin-0.6.0-incubating-SNAPSHOT/* /usr/lib/zeppelin
 # Get mysql client to access remote Hive Metastore
 RUN wget -O /usr/lib/zeppelin/interpreter/spark/mysql-connector-java.jar http://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/5.1.26/mysql-connector-java-5.1.26.jar 
 
-
-# Change timezone to Seoul
-RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+# Change timezone to CST
+RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 
 # Open docker port 8080
 EXPOSE 8080

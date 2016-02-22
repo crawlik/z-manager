@@ -11,7 +11,7 @@ export SERVE_WEBAPP_FROM_FS='true'
 #Use this to change port
 #export PORT="3001"
 
-export SPARK_URL="http://localhost:8080"
+export SPARK_URL="http://localhost:8081"
 export HUB_URL="http://dev.zeppelinhub.com"
 
 #absolute path on Host FS
@@ -19,16 +19,17 @@ export USERS_FOLDER_PATH="$(cd "$(dirname "../_configs/users/.")"; pwd)/$(basena
 export DEFAULT_USER_FOLDER_NAME="defaultuser"
 
 #use this if on linux, without TLS
-#export DOCKER_HOST='localhost'
-#unset DOCKER_TLS_VERIFY
-#unset DOCKER_CERT_PATH
+export DOCKER_HOST='127.0.0.1'
+unset DOCKER_TLS_VERIFY
+unset DOCKER_CERT_PATH
 
 
-export DOCKER_IMAGE="nflabs/zeppelin-bhs-spark-1.4-hadoop-2.0.0-mr1-cdh-4.2.0:latest"
+export DOCKER_IMAGE="zeppelin:latest"
 export DOCKER_PORT="2376"
 
 export DOCKER_HOST_1="${DOCKER_HOST##*/}" #get only the hostname
 export DOCKER_HOSTS="${DOCKER_HOST_1%%:*}: khalidhuseynov, anthonycorbacho"
+echo $DOCKER_HOSTS
 
 
 if [[ ! -f "./server" ]]; then

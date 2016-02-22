@@ -70,7 +70,7 @@ func (contCache Docker) Create(cont CreateContainerReq,
 		spark_blockManager_port_tcp:    {},
 		spark_ui_port_tcp:              {},
 	}
-	//log.Debugf("Exposed Ports:  " + fmt.Sprintln(exposedPorts))
+	log.Debugf("Exposed Ports:  " + fmt.Sprintln(exposedPorts))
 
 	portBindings := map[docker.Port][]docker.PortBinding{
 		"8080/tcp":                     {{HostIP: "0.0.0.0", HostPort: cont.Port}},
@@ -82,7 +82,7 @@ func (contCache Docker) Create(cont CreateContainerReq,
 		spark_blockManager_port_tcp:    {{HostIP: "0.0.0.0", HostPort: portList[4]}},
 		spark_ui_port_tcp:              {{HostIP: "0.0.0.0", HostPort: portList[5]}},
 	}
-	//log.Debugf("Port Bindings:  " + fmt.Sprintln(portBindings))
+	log.Debugf("Port Bindings:  " + fmt.Sprintln(portBindings))
 
 	//mounts FS: expose volumes + bind them
 	volumes := map[string]struct{}{"/usr/lib/zeppelin/conf": {}, "/usr/lib/spark": {}, "/zeppelin/notebook": {}}

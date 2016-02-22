@@ -32,7 +32,8 @@ var log = golog.LoggerFor("z-manager")
 var userHosts = getUserHosts("DOCKER_HOSTS")
 var serveAssetsFromFs = os.Getenv("SERVE_WEBAPP_FROM_FS")
 
-var loginService = HubLoginService{proxy: newHubProxy()}
+//var loginService = HubLoginService{proxy: newHubProxy()}
+var loginService = BasicLoginService{}
 
 // main executes a webserver.
 func main() {
@@ -91,10 +92,10 @@ func main() {
 	})
 
 	//Cluster API - reverse proxy for Spark Master
-	sparkMaster := newSparkMasterProxy()
-	m.Get("/api/v1/cluster", func(w http.ResponseWriter, r *http.Request) {
-		sparkMaster.ServeHTTP(w, r)
-	})
+	//sparkMaster := newSparkMasterProxy()
+	//m.Get("/api/v1/cluster", func(w http.ResponseWriter, r *http.Request) {
+	//	sparkMaster.ServeHTTP(w, r)
+	//})
 
 	//Auth API
 	m.Group("/api/v1/users", func(r martini.Router) {
